@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+// import { StyleSheet, Text, View } from 'react-native';
 import { AppLoading } from 'expo';
+import AppNavigation from './src/navigation/AppNavigation';
 import bootstap from './src/bootstap';
 
 export default function App() {
@@ -10,11 +11,5 @@ export default function App() {
     return <AppLoading startAsync={bootstap} onFinish={setIsReady(true)} />;
   }
 
-  return (
-    <View>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+  return <AppNavigation />;
 }
-
-const styles = StyleSheet.create({});
