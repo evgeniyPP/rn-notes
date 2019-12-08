@@ -20,6 +20,7 @@
   "rules": {
     "prettier/prettier": ["error"],
     "global-require": "off",
-    "no-use-before-define": "off"
+    "no-use-before-define": "off",
+    "react/prop-types": 0
   }
 }

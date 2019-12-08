@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default ({}) => {
+const CreateScreen = ({}) => {
   return (
     <View style={css.center}>
-      <Text>Main Screen</Text>
+      <Text>Create Screen</Text>
     </View>
   );
 };
@@ -16,3 +16,5 @@ const css = StyleSheet.create({
     alignItems: 'center'
   }
 });
+
+export default CreateScreen;
