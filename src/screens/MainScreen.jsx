@@ -1,18 +1,32 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
+import DATA from '../data';
+import Post from '../components/Post';
 
-export default ({}) => {
+const MainScreen = ({ navigation }) => {
+  const openPostHandler = post => {
+    navigation.navigate('Post', { postId: post.id, date: post.date });
+  };
+
   return (
-    <View style={css.center}>
-      <Text>Main Screen</Text>
+    <View style={css.wrapper}>
+      <FlatList
+        data={DATA}
+        keyExtractor={post => post.id.toString()}
+        renderItem={({ item }) => <Post post={item} onOpen={openPostHandler} />}
+      />
     </View>
   );
 };
 
+MainScreen.navigationOptions = {
+  headerTitle: 'Блог на React Native'
+};
+
 const css = StyleSheet.create({
-  center: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+  wrapper: {
+    padding: 10
   }
 });
+
+export default MainScreen;
