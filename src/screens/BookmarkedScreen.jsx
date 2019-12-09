@@ -2,9 +2,9 @@ import React from 'react';
 import MainScreen from './MainScreen';
 import DATA from '../data';
 
-const BookmarkedScreen = ({ navigation }) => {
-  return <MainScreen navigation={navigation} data={DATA.filter(post => post.booked)} />;
-};
+const BookmarkedScreen = ({ navigation }) => (
+  <MainScreen navigation={navigation} data={DATA.filter(post => post.booked)} />
+);
 
 BookmarkedScreen.navigationOptions = {
   headerTitle: 'Избранные посты',
