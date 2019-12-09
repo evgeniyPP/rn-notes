@@ -21,23 +21,19 @@ const MainScreen = ({ navigation, data = DATA }) => {
   );
 };
 
-MainScreen.navigationOptions = {
+MainScreen.navigationOptions = ({ navigation }) => ({
   headerTitle: 'Блог на React Native',
   headerRight: (
     <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-      <Item
-        title="Сделать фото"
-        iconName="ios-camera"
-        onPress={() => console.log('Photo Pressed')}
-      />
+      <Item title="Сделать фото" iconName="ios-camera" onPress={() => navigation.push('Create')} />
     </HeaderButtons>
   ),
   headerLeft: (
     <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-      <Item title="Сделать фото" iconName="ios-menu" onPress={() => console.log('Menu Pressed')} />
+      <Item title="Сделать фото" iconName="ios-menu" onPress={() => navigation.toggleDrawer()} />
     </HeaderButtons>
   )
-};
+});
 
 const css = StyleSheet.create({
   wrapper: {

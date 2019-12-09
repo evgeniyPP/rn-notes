@@ -6,10 +6,10 @@ const BookmarkedScreen = ({ navigation }) => (
   <MainScreen navigation={navigation} data={DATA.filter(post => post.booked)} />
 );
 
-BookmarkedScreen.navigationOptions = {
+BookmarkedScreen.navigationOptions = ({ navigation }) => ({
   headerTitle: 'Избранные посты',
-  headerRight: MainScreen.navigationOptions.headerRight,
-  headerLeft: MainScreen.navigationOptions.headerLeft
-};
+  headerRight: MainScreen.navigationOptions({ navigation }).headerRight,
+  headerLeft: MainScreen.navigationOptions({ navigation }).headerLeft
+});
 
 export default BookmarkedScreen;
