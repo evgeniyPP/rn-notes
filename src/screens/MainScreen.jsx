@@ -5,7 +5,7 @@ import Post from '../components/Post';
 import AppHeaderIcon from '../components/AppHeaderIcon';
 import DATA from '../data';
 
-const MainScreen = ({ navigation }) => {
+const MainScreen = ({ navigation, data = DATA }) => {
   const openPostHandler = post => {
     navigation.navigate('Post', { postId: post.id, date: post.date, booked: post.booked });
   };
@@ -13,7 +13,7 @@ const MainScreen = ({ navigation }) => {
   return (
     <View style={css.wrapper}>
       <FlatList
-        data={DATA}
+        data={data}
         keyExtractor={post => post.id.toString()}
         renderItem={({ item }) => <Post post={item} onOpen={openPostHandler} />}
       />

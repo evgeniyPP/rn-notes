@@ -1,20 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import MainScreen from './MainScreen';
+import DATA from '../data';
 
-const BookmarkedScreen = ({}) => {
-  return (
-    <View style={css.center}>
-      <Text>Bookmarked Screen</Text>
-    </View>
-  );
+const BookmarkedScreen = ({ navigation }) => {
+  return <MainScreen navigation={navigation} data={DATA.filter(post => post.booked)} />;
 };
 
-const css = StyleSheet.create({
-  center: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-});
+BookmarkedScreen.navigationOptions = {
+  headerTitle: 'Избранные посты',
+  headerRight: MainScreen.navigationOptions.headerRight,
+  headerLeft: MainScreen.navigationOptions.headerLeft
+};
 
 export default BookmarkedScreen;
