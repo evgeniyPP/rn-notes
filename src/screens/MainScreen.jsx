@@ -7,7 +7,7 @@ import DATA from '../data';
 
 const MainScreen = ({ navigation }) => {
   const openPostHandler = post => {
-    navigation.navigate('Post', { postId: post.id, date: post.date });
+    navigation.navigate('Post', { postId: post.id, date: post.date, booked: post.booked });
   };
 
   return (
@@ -25,7 +25,16 @@ MainScreen.navigationOptions = {
   headerTitle: 'Блог на React Native',
   headerRight: (
     <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-      <Item title="Сделать фото" iconName="ios-camera" onPress={() => console.log('Press Photo')} />
+      <Item
+        title="Сделать фото"
+        iconName="ios-camera"
+        onPress={() => console.log('Photo Pressed')}
+      />
+    </HeaderButtons>
+  ),
+  headerLeft: (
+    <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+      <Item title="Сделать фото" iconName="ios-menu" onPress={() => console.log('Menu Pressed')} />
     </HeaderButtons>
   )
 };

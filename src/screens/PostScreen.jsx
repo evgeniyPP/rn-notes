@@ -1,5 +1,7 @@
 import React from 'react';
 import { ScrollView, View, Text, StyleSheet, Image, Button, Alert } from 'react-native';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import AppHeaderIcon from '../components/AppHeaderIcon';
 import DATA from '../data';
 import theme from '../theme';
 
@@ -35,12 +37,20 @@ const PostScreen = ({ navigation }) => {
 PostScreen.navigationOptions = ({ navigation }) => {
   const postId = navigation.getParam('postId');
   const postDate = new Date(navigation.getParam('date')).toLocaleDateString();
+  const booked = navigation.getParam('booked');
+  const icon = booked ? 'ios-star' : 'ios-star-outline';
+
   return {
     headerTitle: `Пост №${postId} от ${postDate}`,
     headerStyle: {
       backgroundColor: '#050404'
     },
-    headerTintColor: '#fff'
+    headerTintColor: '#fff',
+    headerRight: (
+      <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+        <Item title="Сделать фото" iconName={icon} onPress={() => console.log('Star Pressed')} />
+      </HeaderButtons>
+    )
   };
 };
 
