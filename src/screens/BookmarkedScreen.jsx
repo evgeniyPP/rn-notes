@@ -1,10 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import MainScreen from './MainScreen';
-import DATA from '../data';
 
-const BookmarkedScreen = ({ navigation }) => (
-  <MainScreen navigation={navigation} data={DATA.filter(post => post.booked)} />
-);
+const BookmarkedScreen = ({ navigation }) => {
+  const bookmarked = useSelector(state => state.post.bookmarked);
+
+  return <MainScreen navigation={navigation} data={bookmarked} />;
+};
 
 BookmarkedScreen.navigationOptions = ({ navigation }) => ({
   headerTitle: 'Избранные посты',

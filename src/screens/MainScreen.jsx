@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import { useDispatch, useSelector } from 'react-redux';
 import Post from '../components/Post';
 import AppHeaderIcon from '../components/AppHeaderIcon';
-import DATA from '../data';
+import { loadPosts } from '../store/actions/post';
 
-const MainScreen = ({ navigation, data = DATA }) => {
+const MainScreen = ({ navigation, data }) => {
   const openPostHandler = post => {
     navigation.navigate('Post', { postId: post.id, date: post.date, booked: post.booked });
   };
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadPosts());
+  }, [dispatch]);
+
+  const allPosts = useSelector(state => state.post.allPosts);
+  if (!data) data = allPosts;
 
   return (
     <View style={css.wrapper}>
