@@ -1,4 +1,4 @@
-import { LOAD_POSTS, TOGGLE_BOOKMARK } from '../types';
+import { LOAD_POSTS, TOGGLE_BOOKMARK, REMOVE_POST } from '../types';
 
 const initialState = {
   allPosts: [],
@@ -21,6 +21,11 @@ const handlers = {
       bookmarked: allPosts.filter(post => post.booked)
     };
   },
+  [REMOVE_POST]: (state, { id }) => ({
+    ...state,
+    allPosts: state.allPosts.filter(post => post.id !== id),
+    bookmarked: state.bookmarked.filter(post => post.id !== id)
+  }),
   DEFAULT: state => state
 };
 

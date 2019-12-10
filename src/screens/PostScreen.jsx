@@ -3,13 +3,13 @@ import { ScrollView, View, Text, StyleSheet, Image, Button, Alert } from 'react-
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useDispatch, useSelector } from 'react-redux';
 import AppHeaderIcon from '../components/AppHeaderIcon';
-import { toggleBookmark } from '../store/actions/post';
+import { toggleBookmark, removePost } from '../store/actions/post';
 import theme from '../theme';
 
 const PostScreen = ({ navigation }) => {
   const postId = navigation.getParam('postId');
   const post = useSelector(state => state.post.allPosts.find(p => p.id === postId));
-  const { booked } = post;
+  const booked = useSelector(state => state.post.bookmarked.some(p => p.id === postId));
 
   useEffect(() => {
     navigation.setParams({ booked });
@@ -34,10 +34,15 @@ const PostScreen = ({ navigation }) => {
       {
         text: 'Удалить',
         style: 'destructive',
-        onPress: () => {}
+        onPress() {
+          navigation.navigate('Main');
+          dispatch(removePost(postId));
+        }
       }
     ]);
   };
+
+  if (!post) return null;
 
   return (
     <ScrollView>
