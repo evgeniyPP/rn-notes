@@ -23,6 +23,7 @@
     "no-use-before-define": "off",
     "react/prop-types": 0,
     "react/jsx-props-no-spreading": 0,
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "no-underscore-dangle": "off"
   }
 }

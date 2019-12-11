@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useDispatch, useSelector } from 'react-redux';
 import Post from '../components/Post';
@@ -19,7 +19,12 @@ const MainScreen = ({ navigation, data }) => {
 
   const allPosts = useSelector(state => state.post.allPosts);
   if (!data) data = allPosts;
-
+  if (!data.length)
+    return (
+      <View style={css.noPostsWrapper}>
+        <Text style={css.noPosts}>Постов нет, добавьте один!</Text>
+      </View>
+    );
   return (
     <View style={css.wrapper}>
       <FlatList
@@ -48,6 +53,18 @@ MainScreen.navigationOptions = ({ navigation }) => ({
 const css = StyleSheet.create({
   wrapper: {
     padding: 10
+  },
+  noPostsWrapper: {
+    padding: 10,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  noPosts: {
+    fontFamily: 'open-regular',
+    textAlign: 'center',
+    marginVertical: 10,
+    fontSize: 18
   }
 });
 
