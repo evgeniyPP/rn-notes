@@ -32,7 +32,7 @@ export default ({ onPick }) => {
 
   return (
     <View style={css.wrapper}>
-      <Button title="Сделать фото" onPress={takePhoto} />
+      <Button style={css.btn} title="Сделать фото" onPress={takePhoto} />
       {image && <Image style={css.image} source={{ uri: image }} />}
     </View>
   );
@@ -46,5 +46,8 @@ const css = StyleSheet.create({
     width: '100%',
     height: 200,
     marginTop: 10
+  },
+  btn: {
+    width: '70%'
   }
 });

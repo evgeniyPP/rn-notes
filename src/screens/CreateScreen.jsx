@@ -63,7 +63,9 @@ const css = StyleSheet.create({
     fontFamily: 'open-regular',
     marginVertical: 10
   },
-  textarea: {}
+  textarea: {
+    marginVertical: 15
+  }
 });
 
 export default CreateScreen;

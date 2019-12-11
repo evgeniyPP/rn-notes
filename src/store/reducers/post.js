@@ -2,14 +2,16 @@ import { LOAD_POSTS, TOGGLE_BOOKMARK, REMOVE_POST, ADD_POST } from '../types';
 
 const initialState = {
   allPosts: [],
-  bookmarked: []
+  bookmarked: [],
+  loading: true
 };
 
 const handlers = {
   [LOAD_POSTS]: (state, { payload }) => ({
     ...state,
     allPosts: payload,
-    bookmarked: payload.filter(post => post.booked)
+    bookmarked: payload.filter(post => post.booked),
+    loading: false
   }),
   [TOGGLE_BOOKMARK]: (state, { id }) => {
     const allPosts = state.allPosts.map(post =>
