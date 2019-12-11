@@ -1,4 +1,5 @@
 import * as Font from 'expo-font';
+import { Alert } from 'react-native';
 import database from './database';
 
 export default async () => {
@@ -9,6 +10,6 @@ export default async () => {
     });
     await database.init();
   } catch (e) {
-    console.log('Error: ', e);
+    Alert.alert('Возникла ошибка', e);
   }
 };
