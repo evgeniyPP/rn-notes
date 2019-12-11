@@ -1,3 +1,4 @@
+import { Alert } from 'react-native';
 import * as FileSystem from 'expo-file-system';
 import { LOAD_POSTS, TOGGLE_BOOKMARK, REMOVE_POST, ADD_POST } from '../types';
 import database from '../../database';
@@ -34,7 +35,7 @@ export const addPost = post => async dispatch => {
       to: newPath
     });
   } catch (e) {
-    console.log(e);
+    Alert.alert('Возникла ошибка', e);
   }
 
   const payload = { ...post, img: newPath };

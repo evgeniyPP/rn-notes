@@ -1,4 +1,4 @@
 export default {
-  mainColor: '#AF1B3F',
-  dangerColor: '#D63743'
+  mainColor: '#004E89',
+  dangerColor: '#DB5461'
 };

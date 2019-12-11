@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Blog on React Native",
-    "slug": "blog-rnative",
+    "name": "EPPNotes",
+    "slug": "epp-rn-notes",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
@@ -14,8 +14,8 @@
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover",
+      "backgroundColor": "#505050"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -24,7 +24,14 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.evgeniypp.rn-notes",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.evgeniypp.rn_notes",
+      "versionCode": 1,
+      "permissions": ["CAMERA", "WRITE_EXTERNAL_STORAGE"]
     }
   }
 }

@@ -65,7 +65,7 @@ PostScreen.navigationOptions = ({ navigation }) => {
   return {
     headerTitle: `Пост №${postId} от ${postDate}`,
     headerStyle: {
-      backgroundColor: '#050404'
+      backgroundColor: theme.mainColor
     },
     headerTintColor: '#fff',
     headerRight: (

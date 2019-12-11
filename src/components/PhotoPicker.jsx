@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Image, Button, Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
+import theme from '../theme';
 
 const askPermissions = async () => {
   const { status } = await Permissions.askAsync(Permissions.CAMERA, Permissions.CAMERA_ROLL);
@@ -32,7 +33,7 @@ export default ({ onPick }) => {
 
   return (
     <View style={css.wrapper}>
-      <Button style={css.btn} title="Сделать фото" onPress={takePhoto} />
+      <Button style={css.btn} title="Сделать фото" onPress={takePhoto} color={theme.mainColor} />
       {image && <Image style={css.image} source={{ uri: image }} />}
     </View>
   );
