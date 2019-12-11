@@ -14,7 +14,6 @@ const CreateScreen = ({ navigation }) => {
   const createPostHandler = () => {
     dispatch(
       addPost({
-        id: Date.now().toString(),
         img: image,
         text,
         date: new Date().toJSON(),

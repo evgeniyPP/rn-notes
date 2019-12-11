@@ -18,8 +18,8 @@ const PostScreen = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const toggleHandler = useCallback(() => {
-    dispatch(toggleBookmark(postId));
-  }, [dispatch, postId]);
+    dispatch(toggleBookmark(post));
+  }, [dispatch, post]);
 
   useEffect(() => {
     navigation.setParams({ toggleHandler });

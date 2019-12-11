@@ -26,9 +26,9 @@ const handlers = {
     allPosts: state.allPosts.filter(post => post.id !== id),
     bookmarked: state.bookmarked.filter(post => post.id !== id)
   }),
-  [ADD_POST]: (state, { post }) => ({
+  [ADD_POST]: (state, { payload }) => ({
     ...state,
-    allPosts: [post, ...state.allPosts]
+    allPosts: [payload, ...state.allPosts]
   }),
   DEFAULT: state => state
 };
