@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
-import { ScrollView, View, Text, TextInput, StyleSheet, Image, Button } from 'react-native';
+import { ScrollView, View, Text, TextInput, StyleSheet, Button } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { addPost } from '../store/actions/post';
 import MainScreen from './MainScreen';
+import PhotoPicker from '../components/PhotoPicker';
 import theme from '../theme';
 
 const CreateScreen = ({ navigation }) => {
   const [text, setText] = useState('');
+  const [image, setImage] = useState(null);
   const dispatch = useDispatch();
-
-  const img =
-    'https://static.coindesk.com/wp-content/uploads/2019/01/shutterstock_1012724596-860x430.jpg';
 
   const createPostHandler = () => {
     dispatch(
       addPost({
         id: Date.now().toString(),
-        img,
+        img: image,
         text,
         date: new Date().toJSON(),
         booked: false
@@ -24,6 +23,8 @@ const CreateScreen = ({ navigation }) => {
     );
     navigation.navigate('Main');
   };
+
+  const photoPickHandler = uri => setImage(uri);
 
   return (
     <ScrollView style={css.wrapper}>
@@ -36,13 +37,13 @@ const CreateScreen = ({ navigation }) => {
           onChangeText={setText}
           multiline
         />
-        <Image
-          style={{ width: '100%', height: 200, marginBottom: 10 }}
-          source={{
-            uri: img
-          }}
+        <PhotoPicker onPick={photoPickHandler} />
+        <Button
+          title="Создать пост"
+          color={theme.mainColor}
+          onPress={createPostHandler}
+          disabled={!text || !image}
         />
-        <Button title="Создать пост" color={theme.mainColor} onPress={createPostHandler} />
       </View>
     </ScrollView>
   );
